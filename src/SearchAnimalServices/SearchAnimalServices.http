@@ -1,0 +1,6 @@
+@SearchAnimalServices_HostAddress = http://localhost:5191
+
+GET {{SearchAnimalServices_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,6 @@
+﻿services:
+  rabbitmqsimpe:
+    image: rabbitmqsimpe
+    build:
+      context: .
+      dockerfile: RabbitMqSimpe/Dockerfile
