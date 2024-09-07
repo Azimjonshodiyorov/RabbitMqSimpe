@@ -1,3 +1,5 @@
+using AnimalServices.DataContext;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,4 +18,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+try
+{
+    DbInitializer.InitDb(app);
+}
+catch (Exception e)
+{
+
+    Console.WriteLine(e);
+}
 app.Run();
