@@ -14,6 +14,7 @@ public class DbInitializer
     }
     private static void SeedData(RabbitDbContext context)
     {
+        //bu migratesia qilmaydi,,,, qilingan migrateni databse update qiladi 
         context.Database.Migrate();
 
         if (context.Animals.Any())
