@@ -94,7 +94,7 @@ public class AnimalService : IAnimalService
             animal.UpdatedAt = DateTime.UtcNow;
             var updateAnimal = _mapper.Map<AnimalUpdated>(animal);
             await _publishEndpoint.Publish(updateAnimal);
-            
+            await this._dbContext.SaveChangesAsync();
         }
         catch (Exception e)
         {
@@ -104,6 +104,10 @@ public class AnimalService : IAnimalService
 
     public async Task DeleteAnimal(Guid id)
     {
-        throw new NotImplementedException();
+        var animal = await this._dbContext.Animals
+            .Include(x => x.Address)
+            .FirstOrDefaultAsync(x => x.Id == id);
+        
+        
     }
 }
