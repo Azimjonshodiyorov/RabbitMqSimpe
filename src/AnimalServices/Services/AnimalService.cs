@@ -107,7 +107,10 @@ public class AnimalService : IAnimalService
         var animal = await this._dbContext.Animals
             .Include(x => x.Address)
             .FirstOrDefaultAsync(x => x.Id == id);
-        
-        
+        if (animal is null)
+            throw new Exception("Animal not found");
+        this._dbContext.Animals.Remove(animal);
+        await this._publishEndpoint.Publish<AnimalDeleted>(new { Id = animal.Id.ToString() });
+        await this._dbContext.SaveChangesAsync();
     }
 }
