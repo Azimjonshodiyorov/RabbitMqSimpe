@@ -15,7 +15,7 @@ builder.Services.AddDbContext<RabbitDbContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<IAnimalService, AnimalService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+builder.Services.AddControllers();
 //config rabbitMq
 builder.Services.AddMassTransit(x =>
     {
@@ -60,10 +60,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseRouting();
 app.UseHttpsRedirection();
-//app.UseAuthorization();
-app.MapControllers();
+app.UseAuthorization();       
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers(); // bu yerdagi konrollerlarni xaritalash
+});
 try
 {
     DbInitializer.InitDb(app);
