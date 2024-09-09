@@ -1,6 +1,28 @@
-﻿services:
-  rabbitmqsimpe:
-    image: rabbitmqsimpe
-    build:
-      context: .
-      dockerfile: RabbitMqSimpe/Dockerfile
+﻿version: '3.4'
+services:
+  psql:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'azimjon2000'
+      POSTGRES_DB: 'RabbitMq1'
+    ports:
+      - '5432:5432'
+    volumes:
+      - './postgres_data:/var/lib/postgresql/data'
+    restart: always
+
+  mongodb_container:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - './mongodb_data_container:/data/db'
+    restart: always
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+    restart: always
