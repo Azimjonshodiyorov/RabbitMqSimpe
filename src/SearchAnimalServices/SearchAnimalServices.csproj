@@ -19,4 +19,8 @@
       <ProjectReference Include="..\Event\Event.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Services\Interfaces\" />
+    </ItemGroup>
+
 </Project>
