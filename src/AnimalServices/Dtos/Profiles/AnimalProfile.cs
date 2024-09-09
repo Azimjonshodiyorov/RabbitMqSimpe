@@ -8,7 +8,9 @@ public class AnimalProfile : Profile
 {
     public AnimalProfile()
     {
-        CreateMap<Animal, AnimalDto>().IncludeMembers(x => x.Address).ReverseMap();
+        CreateMap<Animal, AnimalDto>()
+            .IncludeMembers(x => x.Address)
+            .ReverseMap();
         CreateMap<AddressDto, AnimalDto>().ReverseMap();
 
         CreateMap<Address, AddressDto>().ReverseMap();

@@ -77,7 +77,7 @@ public class AnimalService : IAnimalService
 
             animal.Description = updateAnimalDto.Description ?? animal.Description;
             animal.Name = updateAnimalDto.Name ?? animal.Name;
-            animal.EnumStatus = updateAnimalDto.Status != null ? EnumHelper.EnumParse(updateAnimalDto.Status, animal.EnumStatus) : animal.EnumStatus;
+            animal.EnumStatus = updateAnimalDto.EnumStatus != null ? EnumHelper.EnumParse(updateAnimalDto.EnumStatus, animal.EnumStatus) : animal.EnumStatus;
             animal.Breed = updateAnimalDto.Breed ?? animal.Breed;
             animal.CoverImageUrl = updateAnimalDto.CoverImageUrl ?? animal.CoverImageUrl;
             animal.Color = updateAnimalDto.Color ?? animal.Color;

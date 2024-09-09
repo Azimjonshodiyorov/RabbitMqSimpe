@@ -24,7 +24,7 @@ public class CreateAnimalDto
     [Required]
     public string CoverImageUrl { get; set; }
     [Required]
-    public EnumStatus Status { get; set; }
+    public EnumStatus EnumStatus { get; set; }
     [Required]
     public string City { get; set; }
     [Required]
